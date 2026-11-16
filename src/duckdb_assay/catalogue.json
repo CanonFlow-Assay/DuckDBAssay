@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "assay": "DuckDBAssay",
+  "product": "duckdb",
+  "engineVersion": "2.0.0",
+  "reviewDate": "2026-11-16",
+  "profiles": [
+    "pipeline",
+    "untrusted"
+  ],
+  "rules": [
+    {
+      "id": "DDB001",
+      "title": "Explicit memory_limit in the selected profile",
+      "path": "/settings/memory_limit",
+      "kind": "bytes",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "pipeline",
+        "untrusted"
+      ],
+      "source": "D-CONFIG"
+    },
+    {
+      "id": "DDB002",
+      "title": "Explicit threads in the selected profile",
+      "path": "/settings/threads",
+      "kind": "integer",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "pipeline",
+        "untrusted"
+      ],
+      "source": "D-CONFIG",
+      "min": 1
+    },
+    {
+      "id": "DDB003",
+      "title": "Explicit allow_unsigned_extensions in the selected profile",
+      "path": "/settings/allow_unsigned_extensions",
+      "kind": "boolean",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "pipeline",
+        "untrusted"
+      ],
+      "source": "D-CONFIG",
+      "expected": false
+    },
+    {
+      "id": "DDB004",
+      "title": "Spilling pipeline declares temp_directory",
+      "path": "/settings/temp_directory",
+      "kind": "nonempty",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "pipeline"
+      ],
+      "source": "D-CONFIG"
+    },
+    {
+      "id": "DDB005",
+      "title": "Spilling pipeline declares max_temp_directory_size",
+      "path": "/settings/max_temp_directory_size",
+      "kind": "bytes",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "pipeline"
+      ],
+      "source": "D-CONFIG"
+    },
+    {
+      "id": "DDB006",
+      "title": "Untrusted embedded defense-in-depth: allow_community_extensions",
+      "path": "/settings/allow_community_extensions",
+      "kind": "boolean",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "untrusted"
+      ],
+      "source": "D-SEC",
+      "expected": false
+    },
+    {
+      "id": "DDB007",
+      "title": "Untrusted embedded defense-in-depth: autoinstall_known_extensions",
+      "path": "/settings/autoinstall_known_extensions",
+      "kind": "boolean",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "untrusted"
+      ],
+      "source": "D-SEC",
+      "expected": false
+    },
+    {
+      "id": "DDB008",
+      "title": "Untrusted embedded defense-in-depth: autoload_known_extensions",
+      "path": "/settings/autoload_known_extensions",
+      "kind": "boolean",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "untrusted"
+      ],
+      "source": "D-SEC",
+      "expected": false
+    },
+    {
+      "id": "DDB009",
+      "title": "Untrusted embedded defense-in-depth: enable_external_access",
+      "path": "/settings/enable_external_access",
+      "kind": "boolean",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "untrusted"
+      ],
+      "source": "D-SEC",
+      "expected": false
+    },
+    {
+      "id": "DDB010",
+      "title": "Untrusted embedded defense-in-depth: lock_configuration",
+      "path": "/settings/lock_configuration",
+      "kind": "boolean",
+      "severity": "blocking",
+      "admission": "bounded-snapshot-profile",
+      "profiles": [
+        "untrusted"
+      ],
+      "source": "D-SEC",
+      "expected": true
+    }
+  ]
+}

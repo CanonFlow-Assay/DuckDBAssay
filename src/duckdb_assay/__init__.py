@@ -1,0 +1,1 @@
+"""DuckDBAssay offline evidence verifier."""

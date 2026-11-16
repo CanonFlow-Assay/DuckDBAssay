@@ -1,0 +1,7 @@
+{
+  "python": "3.12",
+  "runtimeDependencies": [],
+  "qualifiedEngineVersion": "2.0.0",
+  "releaseSource": "https://duckdb.org/2026/10/21/announcing-duckdb-200",
+  "reviewedAt": "2026-11-16"
+}

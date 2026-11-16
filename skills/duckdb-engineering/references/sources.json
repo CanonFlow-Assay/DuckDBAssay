@@ -1,0 +1,91 @@
+{
+  "reviewedAt": "2026-11-16",
+  "productVersion": "2.0.0",
+  "sources": [
+    {
+      "id": "D-SEC",
+      "kind": "primary",
+      "url": "https://duckdb.org/docs/2.0/operations_manual/securing_duckdb/overview",
+      "decision": "SQL and relational expressions can access capabilities; settings are defense in depth, not a sandbox."
+    },
+    {
+      "id": "D-EXT",
+      "kind": "primary",
+      "url": "https://duckdb.org/docs/2.0/operations_manual/securing_duckdb/securing_extensions",
+      "decision": "Native extensions carry process privileges; unsigned/custom repository decisions require explicit trust."
+    },
+    {
+      "id": "D-CONFIG",
+      "kind": "primary",
+      "url": "https://duckdb.org/docs/2.0/configuration/overview",
+      "decision": "Native settings export via duckdb_settings; explicit resource settings."
+    },
+    {
+      "id": "D-CONCUR",
+      "kind": "primary",
+      "url": "https://duckdb.org/docs/2.0/connect/concurrency",
+      "decision": "Choose embedded single-process ownership versus supported Quack access; do not generalize old multi-process limitations to all 2.0 modes."
+    },
+    {
+      "id": "D-OOM",
+      "kind": "primary",
+      "url": "https://duckdb.org/docs/current/guides/performance/oom",
+      "decision": "Buffer-manager limit is not whole-process memory isolation."
+    },
+    {
+      "id": "D-PARQUET",
+      "kind": "primary",
+      "url": "https://duckdb.org/docs/2.0/data/parquet/tips",
+      "decision": "Projection/filter pushdown, row-group layout and partitioning need workload measurements."
+    },
+    {
+      "id": "D-REDDIT",
+      "kind": "community",
+      "url": "https://www.reddit.com/r/DuckDB/comments/1g8higx/memory_limitsspillover/",
+      "decision": "Concurrent resource competition motivates explicit budgets; historical connection/process descriptions are version-qualified."
+    },
+    {
+      "id": "D-MEDIUM",
+      "kind": "community",
+      "url": "https://medium.com/arcesium-engineering-blog/query-faster-query-smarter-our-move-to-duckdb-and-what-we-learned-c935128e80bc",
+      "decision": "Parquet staging and parallel output are candidates to measure, not promised universal speedups."
+    },
+    {
+      "id": "D-MEMORY",
+      "kind": "community",
+      "url": "https://medium.com/@kirill.fedorov2112/your-duckdb-memory-limit-is-not-an-isolation-boundary-03ea51302304",
+      "decision": "Hypothetical/AI-assisted article is explicitly low authority; its memory/spill concerns are checked against official documentation."
+    },
+    {
+      "id": "D-SUBSTACK-QUACK",
+      "kind": "community",
+      "url": "https://ramonactruta.substack.com/p/measuring-quack-duckdbs-new-client",
+      "decision": "Client/server parallelism and execution placement motivate separate measurement. Reported ratios are not generalized to 2.0 workloads."
+    },
+    {
+      "id": "D-SUBSTACK-IO",
+      "kind": "community",
+      "url": "https://performancede.substack.com/p/duckdb-20-and-s3-file-read-performance",
+      "decision": "Alpha benchmark is version/workload specific. No guaranteed speedup, global CLI replacement or curl-to-shell installer is imported."
+    },
+    {
+      "id": "D-MEMORY-AUTHOR",
+      "kind": "primary",
+      "url": "https://www.duckdb.org/2024/07/09/memory-management",
+      "decision": "Engine-author explanation supports managed-memory versus process-memory distinction."
+    },
+    {
+      "id": "D-ASYNC-IO",
+      "kind": "primary",
+      "url": "https://duckdb.org/2026/07/31/asynchronous-io",
+      "decision": "Verify eligible formats and actual execution path; do not promise async I/O benefits for every format based on an alpha benchmark."
+    }
+  ],
+  "searchCoverage": [
+    "Official versioned documentation",
+    "Reddit",
+    "Medium",
+    "Substack",
+    "Engine authors and specialist engineering blogs"
+  ]
+}

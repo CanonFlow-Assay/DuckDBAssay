@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "status": "Pass",
+  "python": "3.12.3",
+  "commands": [
+    {
+      "name": "unit",
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exitCode": 0,
+      "expectedExitCodes": [
+        0
+      ],
+      "logSha256": "ed652068a27b877a967254f1b68b4446bb60e4f19477c46eefdb6dfc29e36258",
+      "passed": true
+    },
+    {
+      "name": "package",
+      "argv": [
+        "python",
+        "eng/package.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCodes": [
+        0
+      ],
+      "logSha256": "2edf0bf3ad51241bfec3b9b8d6e1bff55352c1d95c1d8b48abecc09f6c2185ed",
+      "passed": true
+    },
+    {
+      "name": "native",
+      "argv": [
+        "python",
+        "eng/native_smoke.py"
+      ],
+      "exitCode": 0,
+      "expectedExitCodes": [
+        0
+      ],
+      "logSha256": "e98f04e9b769af6af65425c01208f899b3f6b4d51ead7115b71f7399d1d9454b",
+      "passed": true
+    },
+    {
+      "name": "native-assessment",
+      "argv": [
+        "python",
+        "/home/arun/Developer/CanonFlow-Assay/DuckDBAssay/artifacts/duckdb_assay.pyz",
+        "verify",
+        "/home/arun/Developer/CanonFlow-Assay/DuckDBAssay/artifacts/native-snapshot.json",
+        "--policy",
+        "/home/arun/Developer/CanonFlow-Assay/DuckDBAssay/artifacts/native-policy.json",
+        "--out",
+        "/home/arun/Developer/CanonFlow-Assay/DuckDBAssay/artifacts/native-receipt.json"
+      ],
+      "exitCode": 0,
+      "expectedExitCodes": [
+        0
+      ],
+      "logSha256": "cd26b9004fb607d75493f318dd54e504949388cd2c77ef48ebea1fd0aea9d7b8",
+      "passed": true
+    }
+  ],
+  "native": {
+    "status": "Pass",
+    "engineVersion": "2.0.0",
+    "cases": [
+      "exact engine version",
+      "parameterized valid insert",
+      "invalid quantity rejected",
+      "rollback retains prior state",
+      "parameter input remains data",
+      "exact decimal arithmetic",
+      "Parquet round trip",
+      "2.0 VARIANT type available",
+      "persistent reopen",
+      "locked configuration rejects change",
+      "external file access denied by configured boundary"
+    ],
+    "expectedSnapshotVerdict": "Inconclusive without configured tests; Pass with retained native-result acceptance",
+    "limits": "Local small-data semantics and defense-in-depth settings only; not whole-process isolation, measured spill performance, Quack, S3 or concurrency qualification.",
+    "snapshotSha256": "35e25a3197a075b9d77042b8330a8aaa918d7ef66224d06660390b0706a710c3"
+  },
+  "sourceFiles": {
+    "src/duckdb_assay/__init__.py": "de4f701bd6df943f5d1e3b08e584bad062f587373261ff800c7fb320a47f961d",
+    "src/duckdb_assay/__main__.py": "a20f87cc7f83ce9372a55db6c20956add35fe6622e82739ef8c54b8ac03241ef",
+    "src/duckdb_assay/catalogue.json": "ee6378f9f8ede1017a5218772e7c2464d51b9f02f5c483366f8763bba80fcda1",
+    "src/duckdb_assay/engine.py": "1e4bd99af8039351fd8bce8009aff4f10bedd9a61701f25b7652aa4675402828",
+    "tests/test_engine.py": "688c9bd29ff737f5fc7b335e9482dfb20fdf10255593e4bd9a2091888a71f613",
+    "eng/native_smoke.py": "975d6404400fa6b2690715d567fe57935aa8acad9a8f6bfa76852f1c9e2d9cfd",
+    "eng/package.py": "f31ee6326a946ab5dc9176f64e103a92dd7a122dd5b68ada062d4b9afcc4e895",
+    "eng/qualify.py": "55a881f2912246c4fa0530159966d7e3930f90aede6abe6a7b36d1a177e46b01"
+  },
+  "scope": "Local unit/qualification cases and optional disposable native engine; not production deployment certification.",
+  "unitCases": {
+    "run": 42,
+    "passed": 40,
+    "skipped": 2,
+    "failures": 0
+  }
+}

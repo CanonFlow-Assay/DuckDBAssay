@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "product": "duckdb",
+  "version": "2.0.0",
+  "settings": {
+    "memory_limit": "256 MiB",
+    "threads": 2,
+    "temp_directory": "/work/spill",
+    "max_temp_directory_size": "1 GiB",
+    "allow_unsigned_extensions": false,
+    "allow_community_extensions": false,
+    "autoinstall_known_extensions": false,
+    "autoload_known_extensions": false,
+    "enable_external_access": false,
+    "lock_configuration": true
+  }
+}
