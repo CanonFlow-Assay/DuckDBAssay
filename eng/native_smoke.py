@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import tempfile
+import sys
 import duckdb
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -59,5 +60,13 @@ def run():
             'limits':'Local small-data semantics and defense-in-depth settings only; not whole-process isolation, measured spill performance, Quack, S3 or concurrency qualification.'}
 
 
-if __name__=='__main__':
-    result=run();(ROOT/'artifacts/native-results.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+if __name__ == "__main__":
+    if sys.argv[1:3] == ["--profile", "parquet-compatibility"]:
+        from parquet_native import main
+        main(sys.argv[3:])
+    elif len(sys.argv) == 1:
+        result = run()
+        (ROOT / "artifacts/native-results.json").write_text(json.dumps(result, indent=2) + "\n")
+        print(json.dumps(result, indent=2))
+    else:
+        raise SystemExit("unsupported native profile")

@@ -6,7 +6,8 @@
   "reviewDate": "2026-11-16",
   "profiles": [
     "pipeline",
-    "untrusted"
+    "untrusted",
+    "parquet-compatibility"
   ],
   "rules": [
     {
@@ -138,6 +139,58 @@
       ],
       "source": "D-SEC",
       "expected": true
+    },
+    {
+      "id": "DDBP001",
+      "title": "Retained Parquet fields keep their logical and physical type",
+      "path": "/parquet",
+      "kind": "profile",
+      "predicate": "retained",
+      "severity": "blocking",
+      "admission": "bounded-native-profile",
+      "profiles": [
+        "parquet-compatibility"
+      ],
+      "source": "D-ASSAY-PARQUET"
+    },
+    {
+      "id": "DDBP002",
+      "title": "New fields are optional for existing consumers",
+      "path": "/parquet",
+      "kind": "profile",
+      "predicate": "nullable-additions",
+      "severity": "blocking",
+      "admission": "bounded-native-profile",
+      "profiles": [
+        "parquet-compatibility"
+      ],
+      "source": "D-ASSAY-PARQUET"
+    },
+    {
+      "id": "DDBP003",
+      "title": "Native scans and footers agree on a populated row count",
+      "path": "/parquet",
+      "kind": "profile",
+      "predicate": "observed-counts",
+      "severity": "blocking",
+      "admission": "bounded-native-profile",
+      "profiles": [
+        "parquet-compatibility"
+      ],
+      "source": "D-ASSAY-PARQUET"
+    },
+    {
+      "id": "DDBP004",
+      "title": "Existing field values agree in both multiset directions",
+      "path": "/parquet",
+      "kind": "profile",
+      "predicate": "same-rows",
+      "severity": "blocking",
+      "admission": "bounded-native-profile",
+      "profiles": [
+        "parquet-compatibility"
+      ],
+      "source": "D-ASSAY-SET"
     }
   ]
 }

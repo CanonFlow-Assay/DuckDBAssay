@@ -22,6 +22,8 @@ PYTHONPATH=src python3 -m duckdb_assay verify examples/snapshot.json --policy ex
 
 The example policy deliberately declares no application behavior tests, so its clean snapshot is **Inconclusive**, exit 2. Configure actual required commands and their input files according to the contract; no test is fabricated merely to obtain Pass. `assess` preserves the raw verification receipt inside an additive envelope. `--out PATH` writes a receipt to an existing parent directory.
 
+The [Parquet compatibility profile](docs/parquet-compatibility.md) adds four native schema and read-back checks.
+
 ## Validate and package
 
 ```sh

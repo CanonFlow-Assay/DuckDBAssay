@@ -1,0 +1,12 @@
+{
+  "profile": "parquet-compatibility",
+  "package": "duckdb_assay",
+  "files": ["eng/native_smoke.py", "eng/parquet_native.py"],
+  "arguments": [],
+  "controls": {
+    "decimal-drift": "DDBP001",
+    "timestamp-drift": "DDBP001",
+    "changed-value": "DDBP004",
+    "required-field": "DDBP002"
+  }
+}

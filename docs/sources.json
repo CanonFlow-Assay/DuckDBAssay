@@ -79,6 +79,20 @@
       "kind": "primary",
       "url": "https://duckdb.org/2026/07/31/asynchronous-io",
       "decision": "Verify eligible formats and actual execution path; do not promise async I/O benefits for every format based on an alpha benchmark."
+    },
+    {
+      "id": "D-ASSAY-PARQUET",
+      "kind": "primary",
+      "title": "DuckDB Parquet metadata",
+      "url": "https://duckdb.org/docs/2.0/data/parquet/metadata",
+      "uses": "Native profile behavior and interpretation"
+    },
+    {
+      "id": "D-ASSAY-SET",
+      "kind": "primary",
+      "title": "DuckDB set operations",
+      "url": "https://duckdb.org/docs/stable/sql/query_syntax/setops",
+      "uses": "Native profile behavior and interpretation"
     }
   ],
   "searchCoverage": [

@@ -20,3 +20,9 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install --require-hashes -r requirements-native.txt
       - run: python eng/qualify.py --native
+      - run: python eng/qualify-profile.py --out artifacts/profile-qualification
+      - uses: actions/upload-artifact@v4
+        if: always() && hashFiles('artifacts/profile-qualification/**') != ''
+        with:
+          name: native-profile-evidence
+          path: artifacts/profile-qualification/
